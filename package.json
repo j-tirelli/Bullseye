@@ -1,0 +1,30 @@
+{
+  "name": "recommendedProducts",
+  "version": "1.0.0",
+  "description": "Main repository for recommended products module for FEC project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node database/seed.js",
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrr48-fec02-brucequalis/recommendedProducts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hrr48-fec02-brucequalis/recommendedProducts/issues"
+  },
+  "homepage": "https://github.com/hrr48-fec02-brucequalis/recommendedProducts#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "faker": "^5.1.0",
+    "webpack": "^4.44.2"
+  },
+  "devDependencies": {
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+  }
+}
