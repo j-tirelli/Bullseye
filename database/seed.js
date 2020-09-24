@@ -7,11 +7,11 @@ for (let i = 0; i < numRecords; i++) {
     _id: i,
     title: faker.commerce.productName(),
     price: faker.commerce.price(0, 100),
-    imageUrl: 'nothing to see here right now',
+    imageUrl: `https://twzkraus-fec-images.s3-us-west-1.amazonaws.com/50+images/${(i + 15) % 50}.jpg`,
     productUrl: `http://fakewebsite.com/products/${i}`
   });
 }
 
-
+module.exports = records;
 
 
