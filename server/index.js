@@ -1,11 +1,13 @@
 const express = require('express');
 const PORT = 3001;
 const RecommendedItem = require('../database/RecommendedItem.js');
+const path = require('path');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '..', 'dist')));
 
 app.get('/', (req, res) => {
   console.log('GOT a GET');
