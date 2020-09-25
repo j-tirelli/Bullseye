@@ -14,7 +14,6 @@ app.get('/', (req, res) => {
 app.get('/products/:dept', (req, res) => {
   let formattedDept = req.params.dept[0].toUpperCase() + req.params.dept.split('').slice(1).join('');
   RecommendedItem.find({ department: formattedDept }, (err, results) => {
-    debugger;
     res.json(results);
   });
 })
