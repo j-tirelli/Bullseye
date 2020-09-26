@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import List from './List.jsx';
 import axios from 'axios';
+import styles from './Styles.jsx';
 
 const App = (props) => {
 
@@ -13,7 +14,6 @@ const App = (props) => {
       // 'garden' is a temporary query for now. It will likely be changed for later implementation
       axios.get('/products/dept/garden')
         .then(results => {
-          console.log('inside get request');
           setAllItems(results.data);
           setShownItems(results.data.slice(0, 6));
         })
@@ -23,7 +23,7 @@ const App = (props) => {
 
   return (
     <div>
-      <h4>More to consider</h4>
+      <styles.h4>More to consider</styles.h4>
       <div id="recommended-items">
         <List listItems={shownItems}/>
       </div>

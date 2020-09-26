@@ -1,11 +1,12 @@
 import React from 'react';
 import ListItem from './ListItem.jsx';
+import styles from './Styles.jsx';
 
 const List = ({listItems}) => (
-  <ul>
+  <styles.ul>
     {listItems.map(item =>
       <ListItem key={item._id} item={item}/> )}
-  </ul>
+  </styles.ul>
 )
 
 export default List;
