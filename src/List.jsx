@@ -1,9 +1,10 @@
 import React from 'react';
+import ListItem from './ListItem.jsx';
 
 const List = ({listItems}) => (
   <ul>
     {listItems.map(item =>
-      <ListItem item={item}/> )}
+      <ListItem key={item._id} item={item}/> )}
   </ul>
 )
 
