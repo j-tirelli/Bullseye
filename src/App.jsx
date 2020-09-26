@@ -10,7 +10,7 @@ const App = (props) => {
   useEffect(() => {
     // when component mounts, and if no items have been populated:
     if (!allItems.length) {
-      // 'garden' is a temporary query for now--will likely be changed for later implementation
+      // 'garden' is a temporary query for now. It will likely be changed for later implementation
       axios.get('/products/dept/garden')
         .then(results => {
           console.log('inside get request');
