@@ -1,5 +1,4 @@
 const express = require('express');
-const PORT = 3001;
 const RecommendedItem = require('../database/RecommendedItem.js');
 const path = require('path');
 
@@ -38,10 +37,8 @@ app.get('/products/price/min=:minPrice&max=:maxPrice', (req, res) => {
   );
 });
 
-app.listen(PORT, () => {
-  console.log('running on port', PORT);
-});
-
 const formatName = (string) => {
   return string[0].toUpperCase() + string.split('').slice(1).join('');
 };
+
+module.exports = app;
