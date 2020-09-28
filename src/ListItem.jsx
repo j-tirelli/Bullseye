@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Styles.jsx';
 
 const ListItem = ({item}) => {
 
@@ -8,13 +9,13 @@ const ListItem = ({item}) => {
   };
 
   return (
-    <li onClick={(e) => {handleClick(e)}}>
+    <styles.li onClick={(e) => {handleClick(e)}}>
       <a href={item.productUrl}>
-        <img src={item.imageUrl} ></img>
-        <p className="item-price">{item.price}</p>
-        <p className="item-title">{item.title}</p>
+        <styles.img src={item.imageUrl} ></styles.img>
+        <styles.price className="item-price">{item.price}</styles.price>
+        <styles.title className="item-title">{item.title}</styles.title>
       </a>
-    </li>
+    </styles.li>
   );
 };
 
