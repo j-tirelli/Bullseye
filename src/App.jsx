@@ -8,7 +8,15 @@ const App = (props) => {
 
   const [allItems, setAllItems] = useState([]);
   const [shownItems, setShownItems] = useState([]);
-  const [dotsArray, setdotsArray] = useState([1, 0, 0, 0]);
+  const [selectedDot, setSelectedDot] = useState(0);
+  let dotsArray = [];
+  while (dotsArray.length < 4) {
+    if (selectedDot === dotsArray.length) {
+      dotsArray.push(1);
+    } else {
+      dotsArray.push(0);
+    }
+  }
 
   useEffect(() => {
     // when component mounts, and if no items have been populated:
@@ -32,7 +40,7 @@ const App = (props) => {
       </styles.centerDiv>
       <styles.centerDiv id="recommended-items">
         {dotsArray.map((selected, i) =>
-          <Dot selected={selected} key={i} />
+          <Dot selected={selected} key={i} handleClick={() => setSelectedDot(i)}/>
         )}
       </styles.centerDiv>
     </div>
