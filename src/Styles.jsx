@@ -31,6 +31,7 @@ styles.li = styled.li`
 
 styles.img = styled.img`
   width: 100px;
+  height: 100px;
 `;
 
 export default styles;

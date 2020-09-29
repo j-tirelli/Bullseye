@@ -19,17 +19,23 @@ const generateRecords = function(numRecords) {
       brand: brands[ Math.floor( Math.random() * brands.length ) ],
       department: departments[ Math.floor( Math.random() * departments.length ) ],
       price: faker.commerce.price(0, 100),
-      imageUrl: `https://twzkraus-fec-images.s3-us-west-1.amazonaws.com/50+images/${i % 50}.jpg`,
+      imageUrl: `https://twzkraus-fec-images.s3-us-west-1.amazonaws.com/target-images/${i % 51}.jpg`,
       productUrl: `http://fakewebsite.com/products/${i}`
     });
   }
   return records;
 };
 
-const records = generateRecords(600);
-RecommendedItem.create(records)
-  .then(() => {
-    mongoose.disconnect();
-  });
+RecommendedItem.deleteMany({}, (err) => {
+  if (err) {
+    console.log('error deleting:', err);
+  } else {
+    const records = generateRecords(600);
+    RecommendedItem.create(records)
+      .then(() => {
+        mongoose.disconnect();
+      });
+  }
+})
 
 
