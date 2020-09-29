@@ -4,7 +4,7 @@ import styles from './Styles.jsx';
 const Dot = ({selected, handleClick}) => (
     selected ?
     <styles.selectedDot></styles.selectedDot> :
-    <styles.dot onClick={() => handleClick()}></styles.dot>
+    <styles.dotBox onClick={() => handleClick()}><styles.dot></styles.dot></styles.dotBox>
 );
 
 

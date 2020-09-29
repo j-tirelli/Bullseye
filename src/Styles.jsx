@@ -21,7 +21,7 @@ styles.price = styled.p`
 `;
 
 styles.title = styled.p`
-  font-size: 0.5em;
+  font-size: 0.75em;
   text-decoration: underline;
   color: grey;
   text-align: center;
@@ -39,6 +39,17 @@ styles.li = styled.li`
 styles.img = styled.img`
   width: 185px;
   height: 185px;
+  margin: 6px;
+`;
+
+styles.dotBox = styled.div`
+  display: inline-block;
+  text-align: center;
+  width: 10px;
+  padding: 3px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 styles.dot = styled.span`
@@ -47,7 +58,6 @@ styles.dot = styled.span`
   height: 7px;
   border-radius: 50%;
   display: inline-block;
-  margin: 3px;
   :hover {
     cursor: pointer;
   }
@@ -59,7 +69,8 @@ styles.selectedDot = styled.span`
   height: 7px;
   border-radius: 50%;
   display: inline-block;
-  margin: 3px;
+  margin-left: 3px;
+  margin-right: 3px;
   background-color: grey;
 `;
 
