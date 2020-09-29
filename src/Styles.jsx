@@ -13,7 +13,7 @@ styles.centerDiv = styled.div`
 `;
 
 styles.price = styled.p`
-  font-size: 0.4em;
+  font-size: 1em;
   text-decoration: underline;
   color: grey;
   text-align: center;
@@ -37,23 +37,26 @@ styles.li = styled.li`
 `;
 
 styles.img = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 185px;
+  height: 185px;
 `;
 
 styles.dot = styled.span`
   border: 1px solid grey;
-  width: 3px;
-  height: 3px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   display: inline-block;
   margin: 3px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 styles.selectedDot = styled.span`
   border: 1px solid grey;
-  width: 3px;
-  height: 3px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   display: inline-block;
   margin: 3px;

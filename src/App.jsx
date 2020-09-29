@@ -38,10 +38,10 @@ const App = (props) => {
     <div>
       <styles.global />
       <styles.centerDiv><h4>More to consider</h4></styles.centerDiv>
-      <styles.centerDiv id="recommended-items">
+      <div id="recommended-items">
         <List listItems={shownItems}/>
-      </styles.centerDiv>
-      <styles.centerDiv id="recommended-items">
+      </div>
+      <styles.centerDiv>
         {dotsArray.map((selected, i) =>
           <Dot selected={selected} key={i} handleClick={() => setSelectedDot(i)}/>
         )}
