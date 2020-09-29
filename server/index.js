@@ -1,5 +1,4 @@
 const express = require('express');
-const PORT = 3001;
 const RecommendedItem = require('../database/RecommendedItem.js');
 const path = require('path');
 
@@ -21,8 +20,10 @@ app.get('/products/dept/:dept', (req, res) => {
 });
 
 app.get('/products/brand/:brandName', (req, res) => {
-  let firstBrandWord = formatName(req.params.brandName).split(' ')[0];
-  RecommendedItem.find({ brand: {$regex: '^' + firstBrandWord}}, (err, results) => {
+  // escape certain characters from request url
+  let brandWords = req.params.brandName.split(/[,.\s-&amp]/);
+  RecommendedItem.find({
+    brand: {$regex: `^${brandWords.join('.*\s*')}$`, $options: 'i'}}, (err, results) => {
     res.json(results);
   });
 });
@@ -38,10 +39,8 @@ app.get('/products/price/min=:minPrice&max=:maxPrice', (req, res) => {
   );
 });
 
-app.listen(PORT, () => {
-  console.log('running on port', PORT);
-});
-
 const formatName = (string) => {
   return string[0].toUpperCase() + string.split('').slice(1).join('');
 };
+
+module.exports = app;
