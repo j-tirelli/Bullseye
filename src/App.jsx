@@ -24,10 +24,10 @@ const App = (props) => {
   return (
     <div>
       <styles.global />
-      <styles.h4>More to consider</styles.h4>
-      <div id="recommended-items">
+      <styles.centerDiv><h4>More to consider</h4></styles.centerDiv>
+      <styles.centerDiv id="recommended-items">
         <List listItems={shownItems}/>
-      </div>
+      </styles.centerDiv>
     </div>
   );
 }

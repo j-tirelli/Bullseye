@@ -8,7 +8,7 @@ styles.global = createGlobalStyle`
   }
 `;
 
-styles.h4 = styled.h4`
+styles.centerDiv = styled.div`
   text-align: center;
 `;
 
