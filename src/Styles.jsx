@@ -17,6 +17,7 @@ styles.price = styled.p`
   text-decoration: underline;
   color: grey;
   text-align: center;
+  font-weight: 600;
 `;
 
 styles.title = styled.p`
@@ -38,6 +39,25 @@ styles.li = styled.li`
 styles.img = styled.img`
   width: 100px;
   height: 100px;
+`;
+
+styles.dot = styled.span`
+  border: 1px solid grey;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 3px;
+`;
+
+styles.selectedDot = styled.span`
+  border: 1px solid grey;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 3px;
+  background-color: grey;
 `;
 
 export default styles;

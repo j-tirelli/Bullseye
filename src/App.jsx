@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import List from './List.jsx';
+import Dot from './Dot.jsx';
 import axios from 'axios';
 import styles from './Styles.jsx';
 
@@ -7,6 +8,7 @@ const App = (props) => {
 
   const [allItems, setAllItems] = useState([]);
   const [shownItems, setShownItems] = useState([]);
+  const [dotsArray, setdotsArray] = useState([1, 0, 0, 0]);
 
   useEffect(() => {
     // when component mounts, and if no items have been populated:
@@ -14,8 +16,8 @@ const App = (props) => {
       // 'garden' is a temporary query for now. It will likely be changed for later implementation
       axios.get('/products/dept/garden')
         .then(results => {
-          setAllItems(results.data);
-          setShownItems(results.data.slice(0, 6));
+          setAllItems(results.data.slice(0, 24));
+          setShownItems(results.data.slice(0, 7));
         })
         .catch(err => console.log('there was an error', err));
     }
@@ -27,6 +29,11 @@ const App = (props) => {
       <styles.centerDiv><h4>More to consider</h4></styles.centerDiv>
       <styles.centerDiv id="recommended-items">
         <List listItems={shownItems}/>
+      </styles.centerDiv>
+      <styles.centerDiv id="recommended-items">
+        {dotsArray.map((selected, i) =>
+          <Dot selected={selected} key={i} />
+        )}
       </styles.centerDiv>
     </div>
   );
