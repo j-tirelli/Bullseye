@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Styles.jsx';
 
-const Dot = ({selected, key, handleClick}) => (
+const Dot = ({selected, handleClick}) => (
     selected ?
     <styles.selectedDot></styles.selectedDot> :
-    <styles.dot onClick={() => handleClick(key)}></styles.dot>
+    <styles.dot onClick={() => handleClick()}></styles.dot>
 );
 
 

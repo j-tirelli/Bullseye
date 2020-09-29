@@ -26,10 +26,13 @@ const App = (props) => {
         .then(results => {
           setAllItems(results.data.slice(0, 24));
           setShownItems(results.data.slice(0, 7));
-        })
-        .catch(err => console.log('there was an error', err));
+      });
     }
   });
+
+  useEffect(() => {
+    setShownItems(allItems.slice( 7 * selectedDot, 7 * (selectedDot + 1)));
+  }, [selectedDot]);
 
   return (
     <div>
