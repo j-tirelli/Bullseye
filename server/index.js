@@ -20,8 +20,10 @@ app.get('/products/dept/:dept', (req, res) => {
 });
 
 app.get('/products/brand/:brandName', (req, res) => {
-  let firstBrandWord = formatName(req.params.brandName).split(' ')[0];
-  RecommendedItem.find({ brand: {$regex: '^' + firstBrandWord}}, (err, results) => {
+  // escape certain characters from request url
+  let brandWords = req.params.brandName.split(/[,.\s-&amp]/);
+  RecommendedItem.find({
+    brand: {$regex: `^${brandWords.join('.*\s*')}$`, $options: 'i'}}, (err, results) => {
     res.json(results);
   });
 });
