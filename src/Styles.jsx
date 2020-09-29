@@ -1,6 +1,12 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const styles = {};
+
+styles.global = createGlobalStyle`
+  * {
+    font-family: sans-serif;
+  }
+`;
 
 styles.h4 = styled.h4`
   text-align: center;

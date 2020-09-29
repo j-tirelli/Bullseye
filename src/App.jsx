@@ -23,6 +23,7 @@ const App = (props) => {
 
   return (
     <div>
+      <styles.global />
       <styles.h4>More to consider</styles.h4>
       <div id="recommended-items">
         <List listItems={shownItems}/>
