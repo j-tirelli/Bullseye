@@ -35,7 +35,7 @@ RecommendedItem.deleteMany({}, (err) => {
     const records = generateRecords(600);
     RecommendedItem.create(records)
       .then(() => {
-        fs.writeFile('./data/example_data.js', JSON.stringify(records), (err) => {
+        fs.writeFile('./data/example_data.js', `module.exports = ${JSON.stringify(records)}`, (err) => {
           if (err) {
             console.log('error:', err);
           } else {
