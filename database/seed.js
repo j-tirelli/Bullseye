@@ -19,7 +19,7 @@ const generateRecords = function(numRecords) {
       brand: brands[ Math.floor( Math.random() * brands.length ) ],
       department: departments[ Math.floor( Math.random() * departments.length ) ],
       price: Number(faker.commerce.price(0, 100)) - Math.ceil(Math.random() * 5) / 100,
-      imageUrl: `https://twzkraus-fec-images.s3-us-west-1.amazonaws.com/target-images/${i % 51}.jpg`,
+      imageUrl: `https://twzkraus-fec-images.s3-us-west-1.amazonaws.com/target-images/${i % 50}.jpg`,
       productUrl: `http://fakewebsite.com/products/${i}`
     });
   }
