@@ -7,8 +7,8 @@ import exampleData from '../data/example_data.js';
 
 const App = (props) => {
 
-  const [allItems, setAllItems] = useState([]);
-  const [shownItems, setShownItems] = useState([]);
+  const [allItems, setAllItems] = useState(/*exampleData.slice(0, 24)*/[]);
+  const [shownItems, setShownItems] = useState(/*exampleData.slice(0, 7)*/[]);
   const [selectedDot, setSelectedDot] = useState(0);
   let dotsArray = [];
   while (dotsArray.length < 4) {
@@ -18,6 +18,7 @@ const App = (props) => {
       dotsArray.push(0);
     }
   }
+
 
   useEffect(() => {
     // when component mounts, and if no items have been populated:
