@@ -21,6 +21,7 @@ const App = (props) => {
     }
   }
 
+
   useEffect(() => {
     // when component mounts, and if no items have been populated:
     if (!allItems.length) {
