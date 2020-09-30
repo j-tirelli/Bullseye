@@ -3,6 +3,7 @@ import List from './List.jsx';
 import Dot from './Dot.jsx';
 import axios from 'axios';
 import styles from './Styles.jsx';
+import exampleData from '../data/example_data.js';
 
 const App = (props) => {
 
