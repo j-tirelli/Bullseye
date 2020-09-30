@@ -9,7 +9,7 @@ const ListItem = ({item}) => {
   };
 
   return (
-    <styles.li onClick={(e) => {handleClick(e)}}>
+    <styles.li className="list-item" onClick={(e) => {handleClick(e)}}>
       <a href={item.productUrl}>
         <styles.img src={item.imageUrl} ></styles.img>
         <styles.price className="item-price">${item.price}</styles.price>
