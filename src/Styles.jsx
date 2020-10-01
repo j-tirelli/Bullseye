@@ -81,3 +81,13 @@ export const RecItemAnchor = styled.a`
   text-decoration: none;
 `;
 
+export const NavButton = styled.button`
+  padding: 0px 10px 4px 10px;
+  background-color: white;
+  color: black;
+  font-size: 1.5em;
+  border-radius: 50%;
+  :hover {
+    cursor: pointer;
+  }
+`;
