@@ -1,5 +1,5 @@
 import React from 'react';
-import {RecListItem, RecItemImage, RecItemPrice, RecItemTitle} from './Styles.jsx';
+import {RecListItem, RecItemImage, RecItemPrice, RecItemTitle, RecItemAnchor} from './Styles.jsx';
 
 const ListItem = ({item, visible}) => {
 

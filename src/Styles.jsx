@@ -32,6 +32,11 @@ export const RecList = styled.ul`
 
 export const RecListItem = styled.li`
   display: inline-block;
+  color: grey;
+  :hover p {
+    color: black;
+    text-decoration: none;
+  }
 `;
 
 export const RecItemImage = styled.img`
@@ -70,5 +75,9 @@ export const SelectedDot = styled.span`
   margin-left: 3px;
   margin-right: 3px;
   background-color: grey;
+`;
+
+export const RecItemAnchor = styled.a`
+  text-decoration: none;
 `;
 
