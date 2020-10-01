@@ -39,11 +39,9 @@ const App = (props) => {
       <GlobalStyle />
       <CenterTextBox><h4>More to consider</h4></CenterTextBox>
       <div id="recommended-items">
-        <List listItems={shownItems} handleClick={(d) => {
-          if (selectedDot + d > 0 && selectedDot + d <= 4) {
-            setSelectedDot(selectedDot + d);
-          }
-        }}/>
+        <List listItems={shownItems}
+          selected={selectedDot}
+          handleClick={(d) => setSelectedDot(selectedDot + d)}/>
       </div>
       <CenterTextBox>
         {dotsArray.map((selected, i) =>

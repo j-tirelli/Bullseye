@@ -1,13 +1,15 @@
 import React from 'react';
 import ListItem from './ListItem.jsx';
-import {RecList, NavButton} from './Styles.jsx';
+import {RecList, NavButtonRight, NavButtonLeft} from './Styles.jsx';
 
-const List = ({listItems, handleClick}) => (
+const List = ({listItems, handleClick, selected}) => (
   <RecList>
-    <NavButton onClick={() => handleClick(-1)}>{'<'}</NavButton>
+    {selected > 0 ?
+    <NavButtonLeft onClick={() => handleClick(-1)}>{'<'}</NavButtonLeft> : ''}
       {listItems.map(item =>
         <ListItem key={item._id} item={item}/> )}
-    <NavButton onClick={() => handleClick(1)}>{'>'}</NavButton>
+    {selected < 3 ?
+    <NavButtonRight onClick={() => handleClick(1)}>{'>'}</NavButtonRight> : ''}
   </RecList>
 );
 

@@ -27,11 +27,11 @@ export const RecItemTitle = styled.p`
 
 export const RecList = styled.ul`
   list-style-type: none;
-  display: inline-block;
+  display: flex;
+  flex-direction: horizontal;
+  justify-content: center;
   :hover button {
-    display: inline-block;
-    position: absolute;
-    margin-top: 70px;
+    display: block;
   }
 `;
 
@@ -86,14 +86,28 @@ export const RecItemAnchor = styled.a`
   text-decoration: none;
 `;
 
-export const NavButton = styled.button`
-  padding: 0px 10px 4px 10px;
+const NavButton = styled.button`
+  height: 40px;
+  width: 40px;
   background-color: white;
   color: black;
   font-size: 1.5em;
   border-radius: 50%;
   display: none;
+  margin-top: 90px;
   :hover {
     cursor: pointer;
   }
+`;
+
+export const NavButtonRight = styled(NavButton)`
+  z-index: 10;
+  justify-self: flex-end;
+  margin-left: -40px;
+`;
+
+export const NavButtonLeft = styled(NavButton)`
+  z-index: 10;
+  justify-self: flex-start;
+  margin-right: -40px;
 `;
