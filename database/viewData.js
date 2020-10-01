@@ -2,7 +2,6 @@ const RecommendedItem = require('./RecommendedItem.js');
 const mongoose = require('mongoose');
 
 RecommendedItem.find((err, vals) => {
-  // console.log(vals);
   let depts = {};
   let brands = {};
   vals.forEach(val => {

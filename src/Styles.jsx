@@ -1,18 +1,16 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-const styles = {};
-
-styles.global = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   * {
     font-family: sans-serif;
   }
 `;
 
-styles.centerDiv = styled.div`
+export const CenterTextBox = styled.div`
   text-align: center;
 `;
 
-styles.price = styled.p`
+export const RecItemPrice = styled.p`
   font-size: 1em;
   text-decoration: underline;
   color: grey;
@@ -20,29 +18,29 @@ styles.price = styled.p`
   font-weight: 600;
 `;
 
-styles.title = styled.p`
+export const RecItemTitle = styled.p`
   font-size: 0.75em;
   text-decoration: underline;
   color: grey;
   text-align: center;
 `;
 
-styles.ul = styled.ul`
+export const RecList = styled.ul`
   list-style-type: none;
   display: inline-block;
 `;
 
-styles.li = styled.li`
+export const RecListItem = styled.li`
   display: inline-block;
 `;
 
-styles.img = styled.img`
+export const RecItemImage = styled.img`
   width: 185px;
   height: 185px;
   margin: 6px;
 `;
 
-styles.dotBox = styled.div`
+export const NavDotContainer = styled.div`
   display: inline-block;
   text-align: center;
   width: 10px;
@@ -52,7 +50,7 @@ styles.dotBox = styled.div`
   }
 `;
 
-styles.dot = styled.span`
+export const UnselectedDot = styled.span`
   border: 1px solid grey;
   width: 7px;
   height: 7px;
@@ -63,7 +61,7 @@ styles.dot = styled.span`
   }
 `;
 
-styles.selectedDot = styled.span`
+export const SelectedDot = styled.span`
   border: 1px solid grey;
   width: 7px;
   height: 7px;
@@ -74,4 +72,3 @@ styles.selectedDot = styled.span`
   background-color: grey;
 `;
 
-export default styles;
