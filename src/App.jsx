@@ -7,8 +7,8 @@ import exampleData from '../data/example_data.js';
 
 const App = (props) => {
 
-  const [allItems, setAllItems] = useState(/*exampleData.slice(0, 24)*/[]);
-  const [shownItems, setShownItems] = useState(/*exampleData.slice(0, 7)*/[]);
+  const [allItems, setAllItems] = useState(exampleData.slice(0, 24));
+  const [shownItems, setShownItems] = useState(exampleData.slice(0, 7));
   const [selectedDot, setSelectedDot] = useState(0);
   let dotsArray = [];
   while (dotsArray.length < 4) {
