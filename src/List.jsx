@@ -1,6 +1,6 @@
 import React from 'react';
 import ListItem from './ListItem.jsx';
-import {RecList, NavButton} from './Styles.jsx';
+import {RecList, NavButtonRight, NavButtonLeft} from './Styles.jsx';
 
 const List = ({listItems, selectedDot, numVisible}) => {
   let minIVisible = selectedDot * numVisible;
