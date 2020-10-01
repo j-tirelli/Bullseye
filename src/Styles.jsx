@@ -29,7 +29,9 @@ export const RecList = styled.ul`
   list-style-type: none;
   display: inline-block;
   :hover button {
-    display: block;
+    display: inline-block;
+    position: absolute;
+    margin-top: 70px;
   }
 `;
 
