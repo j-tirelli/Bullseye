@@ -1,11 +1,13 @@
 import React from 'react';
 import ListItem from './ListItem.jsx';
-import {RecList} from './Styles.jsx';
+import {RecList, NavButton} from './Styles.jsx';
 
 const List = ({listItems}) => (
   <RecList>
-    {listItems.map(item =>
-      <ListItem key={item._id} item={item}/> )}
+    <NavButton>{'<'}</NavButton>
+      {listItems.map(item =>
+        <ListItem key={item._id} item={item}/> )}
+    <NavButton>{'>'}</NavButton>
   </RecList>
 );
 

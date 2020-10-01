@@ -28,6 +28,9 @@ export const RecItemTitle = styled.p`
 export const RecList = styled.ul`
   list-style-type: none;
   display: inline-block;
+  :hover button {
+    display: block;
+  }
 `;
 
 export const RecListItem = styled.li`
@@ -87,6 +90,7 @@ export const NavButton = styled.button`
   color: black;
   font-size: 1.5em;
   border-radius: 50%;
+  display: none;
   :hover {
     cursor: pointer;
   }
