@@ -92,6 +92,8 @@ const NavButton = styled.button`
   background-color: white;
   color: black;
   font-size: 1.5em;
+  border: 2px solid black;
+  z-index: 1;
   border-radius: 50%;
   display: none;
   margin-top: 90px;
@@ -101,13 +103,11 @@ const NavButton = styled.button`
 `;
 
 export const NavButtonRight = styled(NavButton)`
-  z-index: 10;
   justify-self: flex-end;
   margin-left: -40px;
 `;
 
 export const NavButtonLeft = styled(NavButton)`
-  z-index: 10;
   justify-self: flex-start;
   margin-right: -40px;
 `;
