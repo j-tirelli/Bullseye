@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import List from './List.jsx';
 import Dot from './Dot.jsx';
 import axios from 'axios';
-import {GlobalStyle, CenterTextBox, NavButton} from './Styles.jsx';
+import {GlobalStyle, CenterTextBox} from './Styles.jsx';
 
 const App = (props) => {
 
@@ -49,8 +49,6 @@ const App = (props) => {
           <Dot selected={selected} key={i} handleClick={() => setSelectedDot(i)}/>
         )}
       </CenterTextBox>
-        <NavButton>{'>'}</NavButton>
-        <NavButton>{'<'}</NavButton>
     </div>
   );
 }
