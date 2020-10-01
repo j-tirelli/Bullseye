@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import List from './List.jsx';
 import Dot from './Dot.jsx';
 import axios from 'axios';
-import styles from './Styles.jsx';
+import {GlobalStyle, CenterTextBox} from './Styles.jsx';
 
 const App = (props) => {
 
@@ -36,16 +36,16 @@ const App = (props) => {
 
   return (
     <div>
-      <styles.global />
-      <styles.centerDiv><h4>More to consider</h4></styles.centerDiv>
+      <GlobalStyle />
+      <CenterTextBox><h4>More to consider</h4></CenterTextBox>
       <div id="recommended-items">
         <List listItems={shownItems}/>
       </div>
-      <styles.centerDiv>
+      <CenterTextBox>
         {dotsArray.map((selected, i) =>
           <Dot selected={selected} key={i} handleClick={() => setSelectedDot(i)}/>
         )}
-      </styles.centerDiv>
+      </CenterTextBox>
     </div>
   );
 }
