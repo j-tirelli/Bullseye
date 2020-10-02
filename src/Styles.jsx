@@ -31,7 +31,9 @@ export const RecList = styled.ul`
   flex-direction: horizontal;
   justify-content: left;
   :hover button {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0s linear;
   }
 `;
 
@@ -95,8 +97,10 @@ const NavButton = styled.button`
   border: 2px solid black;
   z-index: 1;
   border-radius: 50%;
-  display: none;
   margin-top: 90px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
   :hover {
     cursor: pointer;
   }
