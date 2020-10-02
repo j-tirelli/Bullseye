@@ -8,14 +8,10 @@ const App = (props) => {
 
   const [allItems, setAllItems] = useState([]);
   const [selectedDot, setSelectedDot] = useState(0);
-<<<<<<< HEAD
   const [numItems, setNumItems] = useState(24);
   const [numVisible, setNumVisible] = useState(7);
   const [numDots, setNumDots] = useState(Math.ceil(numItems / numVisible));
 
-=======
-  const [numVisible, setNumVisible] = useState(7);
->>>>>>> 33e5a8f... Rebase in progress. refactored list and listitem to host all items on html, but only display the relevant ones. Removed shownItems state from app.
   let dotsArray = [];
   while (dotsArray.length < numDots) {
     if (selectedDot === dotsArray.length) {
