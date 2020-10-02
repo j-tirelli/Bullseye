@@ -7,8 +7,8 @@ import {GlobalStyle, CenterTextBox} from './Styles.jsx';
 const App = (props) => {
 
   const [allItems, setAllItems] = useState([]);
-  const [shownItems, setShownItems] = useState([]);
   const [selectedDot, setSelectedDot] = useState(0);
+  const [numVisible, setNumVisible] = useState(7);
   let dotsArray = [];
   while (dotsArray.length < 4) {
     if (selectedDot === dotsArray.length) {
@@ -25,21 +25,20 @@ const App = (props) => {
       axios.get('/products/dept/garden')
         .then(results => {
           setAllItems(results.data.slice(0, 24));
-          setShownItems(results.data.slice(0, 7));
       });
     }
   });
 
-  useEffect(() => {
-    setShownItems(allItems.slice( 7 * selectedDot, 7 * (selectedDot + 1)));
-  }, [selectedDot]);
+  // useEffect(() => {
+  //   setShownItems(allItems.slice( 7 * selectedDot, 7 * (selectedDot + 1)));
+  // }, [selectedDot]);
 
   return (
     <div>
       <GlobalStyle />
       <CenterTextBox><h4>More to consider</h4></CenterTextBox>
       <div id="recommended-items">
-        <List listItems={shownItems}/>
+        <List listItems={allItems} selectedDot={selectedDot} numVisible={numVisible}/>
       </div>
       <CenterTextBox>
         {dotsArray.map((selected, i) =>
