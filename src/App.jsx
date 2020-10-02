@@ -24,9 +24,18 @@ const App = (props) => {
       // 'garden' is a temporary query for now. It will likely be changed for later implementation
       axios.get('/products/dept/garden')
         .then(results => {
-          setAllItems(results.data.slice(0, 24));
-          setShownItems(results.data.slice(0, 7));
-      });
+          debugger;
+          if (results.data.length < 24) {
+            axios.get('/products/dept/games')
+              .then(results2 => {
+                setAllItems(results.data.concat(results2.data).slice(0, 24));
+                setShownItems(results.data.concat(results2.data).slice(0, 7));
+              })
+          } else {
+            setAllItems(results.data.slice(0, 24));
+            setShownItems(results.data.slice(0, 7));
+          }
+        });
     }
   });
 
