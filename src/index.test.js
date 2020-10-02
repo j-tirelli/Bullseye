@@ -40,13 +40,22 @@ test('should have the first dot selected by default, and no other dots selected'
   }
 });
 
-test('should have elements for an image, price, and product name', () => {
+test('should have elements for 1 image and 2 paragraphs', () => {
   const listItem = shallow(<ListItem item={{}}/>);
-  const expectedElements = ['img', 'p', 'p'];
+  const expectedElements = {
+    img: 1,
+    p: 2,
+  };
+  let actualElements = {};
   const children = listItem.prop('children').props.children;
   children.forEach((child, i) => {
-    expect(child.type.target).toBe(expectedElements[i]);
+    actualElements[child.type.target] = actualElements[child.type.target] || 0;
+    actualElements[child.type.target]++;
   });
+  expect(Object.keys(expectedElements).length).toEqual(Object.keys(actualElements).length);
+  for (let key in expectedElements) {
+    expect(expectedElements[key]).toEqual(actualElements[key]);
+  };
 });
 
 test('should change state of selected dot on dot click', (done) => {
