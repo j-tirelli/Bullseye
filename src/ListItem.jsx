@@ -12,7 +12,7 @@ const ListItem = ({item}) => {
     <RecListItem onClick={(e) => {handleClick(e)}}>
       <RecItemAnchor href={item.productUrl}>
         <RecItemImage src={item.imageUrl} ></RecItemImage>
-        <RecItemPrice className="item-price">${item.price}</RecItemPrice>
+        <RecItemPrice>${item.price}</RecItemPrice>
       </RecItemAnchor>
     </RecListItem>
   );

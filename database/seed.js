@@ -1,6 +1,7 @@
 const faker = require('faker');
 const db = require('./index.js');
 const mongoose = require('mongoose');
+const fs = require('fs');
 const RecommendedItem = require('./RecommendedItem.js');
 
 const generateRecords = function(numRecords) {
@@ -34,9 +35,15 @@ RecommendedItem.deleteMany({}, (err) => {
     const records = generateRecords(600);
     RecommendedItem.create(records)
       .then(() => {
-        mongoose.disconnect();
+        fs.writeFile('./data/example_data.js', `module.exports = ${JSON.stringify(records)}`, (err) => {
+          if (err) {
+            console.log('error:', err);
+          } else {
+            console.log('example data file has been written');
+          }
+          mongoose.disconnect();
+        });
       });
   }
-})
-
+});
 
