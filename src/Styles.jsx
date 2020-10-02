@@ -29,7 +29,7 @@ export const RecList = styled.ul`
   list-style-type: none;
   display: flex;
   flex-direction: horizontal;
-  justify-content: center;
+  justify-content: left;
   :hover button {
     display: block;
   }
