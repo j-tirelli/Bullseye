@@ -13,7 +13,6 @@ const ListItem = ({item}) => {
       <a href={item.productUrl}>
         <styles.img src={item.imageUrl} ></styles.img>
         <styles.price className="item-price">${item.price}</styles.price>
-        <styles.title className="item-title">{item.title}</styles.title>
       </a>
     </styles.li>
   );

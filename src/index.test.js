@@ -44,7 +44,7 @@ test('should have elements for 1 image and 2 paragraphs', () => {
   const listItem = shallow(<ListItem item={{}}/>);
   const expectedElements = {
     img: 1,
-    p: 2,
+    p: 1,
   };
   let actualElements = {};
   const children = listItem.prop('children').props.children;
