@@ -8,9 +8,12 @@ const App = (props) => {
 
   const [allItems, setAllItems] = useState([]);
   const [selectedDot, setSelectedDot] = useState(0);
+  const [numItems, setNumItems] = useState(24);
   const [numVisible, setNumVisible] = useState(7);
+  const [numDots, setNumDots] = useState(Math.ceil(numItems / numVisible));
+
   let dotsArray = [];
-  while (dotsArray.length < 4) {
+  while (dotsArray.length < numDots) {
     if (selectedDot === dotsArray.length) {
       dotsArray.push(1);
     } else {
@@ -24,7 +27,7 @@ const App = (props) => {
       // 'garden' is a temporary query for now. It will likely be changed for later implementation
       axios.get('/products/dept/garden')
         .then(results => {
-          setAllItems(results.data.slice(0, 24));
+          setAllItems(results.data.slice(0, numItems));
       });
     }
   });

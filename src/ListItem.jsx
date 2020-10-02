@@ -14,7 +14,6 @@ const ListItem = ({item, visible}) => {
         <a href={item.productUrl}>
           <RecItemImage src={item.imageUrl} ></RecItemImage>
           <RecItemPrice className="item-price">${item.price}</RecItemPrice>
-          <RecItemTitle className="item-title">{item.title}</RecItemTitle>
         </a>
       </RecListItem>
     );
