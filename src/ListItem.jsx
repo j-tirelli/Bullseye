@@ -1,5 +1,5 @@
 import React from 'react';
-import {RecListItem, RecItemImage, RecItemPrice, RecItemTitle} from './Styles.jsx';
+import {RecListItem, RecItemImage, RecItemPrice, RecItemTitle, RecItemAnchor} from './Styles.jsx';
 
 const ListItem = ({item}) => {
 
@@ -10,11 +10,10 @@ const ListItem = ({item}) => {
 
   return (
     <RecListItem onClick={(e) => {handleClick(e)}}>
-      <a href={item.productUrl}>
+      <RecItemAnchor href={item.productUrl}>
         <RecItemImage src={item.imageUrl} ></RecItemImage>
         <RecItemPrice className="item-price">${item.price}</RecItemPrice>
-        <RecItemTitle className="item-title">{item.title}</RecItemTitle>
-      </a>
+      </RecItemAnchor>
     </RecListItem>
   );
 };

@@ -27,11 +27,23 @@ export const RecItemTitle = styled.p`
 
 export const RecList = styled.ul`
   list-style-type: none;
-  display: inline-block;
+  display: flex;
+  flex-direction: horizontal;
+  justify-content: left;
+  :hover button {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0s linear;
+  }
 `;
 
 export const RecListItem = styled.li`
   display: inline-block;
+  color: grey;
+  :hover p {
+    color: black;
+    text-decoration: none;
+  }
 `;
 
 export const RecItemImage = styled.img`
@@ -72,3 +84,34 @@ export const SelectedDot = styled.span`
   background-color: grey;
 `;
 
+export const RecItemAnchor = styled.a`
+  text-decoration: none;
+`;
+
+const NavButton = styled.button`
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  color: black;
+  font-size: 1.5em;
+  border: 2px solid black;
+  z-index: 1;
+  border-radius: 50%;
+  margin-top: 90px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+export const NavButtonRight = styled(NavButton)`
+  justify-self: flex-end;
+  margin-left: -40px;
+`;
+
+export const NavButtonLeft = styled(NavButton)`
+  justify-self: flex-start;
+  margin-right: -40px;
+`;

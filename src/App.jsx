@@ -39,7 +39,9 @@ const App = (props) => {
       <GlobalStyle />
       <CenterTextBox><h4>More to consider</h4></CenterTextBox>
       <div id="recommended-items">
-        <List listItems={shownItems}/>
+        <List listItems={shownItems}
+          selected={selectedDot}
+          handleClick={(d) => setSelectedDot(selectedDot + d)}/>
       </div>
       <CenterTextBox>
         {dotsArray.map((selected, i) =>
