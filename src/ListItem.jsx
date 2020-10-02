@@ -11,14 +11,15 @@ const ListItem = ({item, visible}) => {
   if (visible) {
     return (
       <RecListItem onClick={(e) => {handleClick(e)}}>
-        <a href={item.productUrl}>
+        <RecItemAnchor href={item.productUrl}>
           <RecItemImage src={item.imageUrl} ></RecItemImage>
-          <RecItemPrice className="item-price">${item.price}</RecItemPrice>
-        </a>
+          <RecItemPrice>${item.price}</RecItemPrice>
+        </RecItemAnchor>
       </RecListItem>
     );
+  } else {
+    return <div></div>
   }
-  return <div></div>
 };
 
 export default ListItem;

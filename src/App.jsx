@@ -8,10 +8,14 @@ const App = (props) => {
 
   const [allItems, setAllItems] = useState([]);
   const [selectedDot, setSelectedDot] = useState(0);
+<<<<<<< HEAD
   const [numItems, setNumItems] = useState(24);
   const [numVisible, setNumVisible] = useState(7);
   const [numDots, setNumDots] = useState(Math.ceil(numItems / numVisible));
 
+=======
+  const [numVisible, setNumVisible] = useState(7);
+>>>>>>> 33e5a8f... Rebase in progress. refactored list and listitem to host all items on html, but only display the relevant ones. Removed shownItems state from app.
   let dotsArray = [];
   while (dotsArray.length < numDots) {
     if (selectedDot === dotsArray.length) {
@@ -33,11 +37,9 @@ const App = (props) => {
             axios.get('/products/dept/games')
               .then(results2 => {
                 setAllItems(results.data.concat(results2.data).slice(0, 24));
-                setShownItems(results.data.concat(results2.data).slice(0, 7));
               })
           } else {
             setAllItems(results.data.slice(0, 24));
-            setShownItems(results.data.slice(0, 7));
           }
         });
     }
@@ -52,7 +54,7 @@ const App = (props) => {
       <GlobalStyle />
       <CenterTextBox><h4>More to consider</h4></CenterTextBox>
       <div id="recommended-items">
-        <List listItems={allItems} selectedDot={selectedDot} numVisible={numVisible}/>
+        <List listItems={allItems} selectedDot={selectedDot} numVisible={numVisible} handleClick={(d) => setSelectedDot(selectedDot + d)}/>
       </div>
       <CenterTextBox>
         {dotsArray.map((selected, i) =>
