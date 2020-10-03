@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -25,6 +25,24 @@ export const RecItemTitle = styled.p`
   text-align: center;
 `;
 
+const scrollLeft = keyframes`
+  0% {
+    transform: translate(0)
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+`;
+
+const scrollRight = keyframes`
+  0% {
+    transform: translate(0)
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
+`;
+
 export const RecList = styled.ul`
   list-style-type: none;
   display: flex;
@@ -35,6 +53,14 @@ export const RecList = styled.ul`
     opacity: 1;
     transition: opacity 0s linear;
   }
+`;
+
+export const RecListScrollingLeft = styled(RecList)`
+  animation: ${scrollLeft} 2s linear;
+`;
+
+export const RecListScrollingRight = styled(RecList)`
+  animation: ${scrollRight} 2s linear;
 `;
 
 export const RecListItem = styled.li`
