@@ -5,11 +5,12 @@ import axios from 'axios';
 import exampleData from '../data/example_data.js';
 import {GlobalStyle, CenterTextBox} from './Styles.jsx';
 
-const App = ({totalItems, itemsShown}) => {
+const App = ({totalItems, itemsShown, test}) => {
 
-  const [allItems, setAllItems] = useState([]);
+
   const [selectedDot, setSelectedDot] = useState(0);
   const [numItems, setNumItems] = useState(totalItems);
+  const [allItems, setAllItems] = useState(exampleData.slice(0, numItems));
   const [numVisible, setNumVisible] = useState(itemsShown);
   const [numDots, setNumDots] = useState(Math.ceil(numItems / numVisible));
 
@@ -22,10 +23,8 @@ const App = ({totalItems, itemsShown}) => {
     }
   }
 
-
   useEffect(() => {
-    // when component mounts, and if no items have been populated:
-    if (!allItems.length) {
+    if (!test) {
       // 'garden' is a temporary query for now. It will likely be changed for later implementation
       axios.get('/products/dept/garden')
         .then(results => {
@@ -39,7 +38,7 @@ const App = ({totalItems, itemsShown}) => {
           }
         });
     }
-  });
+  }, []);
 
   return (
     <div>

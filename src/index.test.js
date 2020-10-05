@@ -10,7 +10,7 @@ let app;
 Enzyme.configure({adapter: new Adapter()});
 
 beforeEach(() => {
-  app = shallow(<App/>);
+  app = shallow(<App totalItems={24} itemsShown={7} test={true}/>);
 });
 
 test('test suite is functional', () => {
@@ -18,7 +18,6 @@ test('test suite is functional', () => {
 });
 
 test('should render at least one ListItem component', () => {
-  // this gets to listItems, but it's showing me an empty array:
   const items = app.find('div').getElements()[1].props.children.props.listItems;
   expect(items.length).not.toBe(0);
 });
@@ -40,8 +39,8 @@ test('should have the first dot selected by default, and no other dots selected'
   }
 });
 
-test('should have elements for 1 image and 2 paragraphs', () => {
-  const listItem = shallow(<ListItem item={{}}/>);
+test('should have elements for 1 image and 1 paragraph when list item is visible', () => {
+  const listItem = shallow(<ListItem item={{}} visible={true}/>);
   const expectedElements = {
     img: 1,
     p: 1,
