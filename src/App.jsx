@@ -5,13 +5,17 @@ import axios from 'axios';
 import exampleData from '../data/example_data.js';
 import {GlobalStyle, CenterTextBox} from './Styles.jsx';
 
-const App = (props) => {
+const App = ({totalItems, itemsShown, test}) => {
 
-  const [allItems, setAllItems] = useState(exampleData.slice(0, 24));
-  const [shownItems, setShownItems] = useState(exampleData.slice(0, 7));
+
   const [selectedDot, setSelectedDot] = useState(0);
+  const [numItems, setNumItems] = useState(totalItems);
+  const [allItems, setAllItems] = useState(exampleData.slice(0, numItems));
+  const [numVisible, setNumVisible] = useState(itemsShown);
+  const [numDots, setNumDots] = useState(Math.ceil(numItems / numVisible));
+
   let dotsArray = [];
-  while (dotsArray.length < 4) {
+  while (dotsArray.length < numDots) {
     if (selectedDot === dotsArray.length) {
       dotsArray.push(1);
     } else {
@@ -19,39 +23,33 @@ const App = (props) => {
     }
   }
 
-
   useEffect(() => {
-    // when component mounts, and if no items have been populated:
-    if (!allItems.length) {
+    if (!test) {
       // 'garden' is a temporary query for now. It will likely be changed for later implementation
       axios.get('/products/dept/garden')
         .then(results => {
-          debugger;
-          if (results.data.length < 24) {
+          if (results.data.length < numItems) {
             axios.get('/products/dept/games')
               .then(results2 => {
-                setAllItems(results.data.concat(results2.data).slice(0, 24));
-                setShownItems(results.data.concat(results2.data).slice(0, 7));
+                setAllItems(results.data.concat(results2.data).slice(0, numItems));
               })
           } else {
-            setAllItems(results.data.slice(0, 24));
-            setShownItems(results.data.slice(0, 7));
+            setAllItems(results.data.slice(0, numItems));
           }
         });
     }
-  });
-
-  useEffect(() => {
-    setShownItems(allItems.slice( 7 * selectedDot, 7 * (selectedDot + 1)));
-  }, [selectedDot]);
+  }, []);
 
   return (
     <div>
       <GlobalStyle />
       <CenterTextBox><h4>More to consider</h4></CenterTextBox>
       <div id="recommended-items">
-        <List listItems={shownItems}
-          selected={selectedDot}
+        <List
+          listItems={allItems}
+          numVisible={numVisible}
+          selectedDot={selectedDot}
+          numDots={numDots}
           handleClick={(d) => setSelectedDot(selectedDot + d)}/>
       </div>
       <CenterTextBox>
@@ -62,5 +60,6 @@ const App = (props) => {
     </div>
   );
 }
+// not an important comment--just checking that circleCI isn't tracking this branch
 
 export default App;
