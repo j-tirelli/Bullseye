@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import List from './List.jsx';
 import Dot from './Dot.jsx';
 import axios from 'axios';
+import exampleData from '../data/example_data.js';
 import {GlobalStyle, CenterTextBox} from './Styles.jsx';
 
 const App = ({totalItems, itemsShown}) => {
