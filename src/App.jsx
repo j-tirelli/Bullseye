@@ -4,12 +4,12 @@ import Dot from './Dot.jsx';
 import axios from 'axios';
 import {GlobalStyle, CenterTextBox} from './Styles.jsx';
 
-const App = (props) => {
+const App = ({totalItems, itemsShown}) => {
 
   const [allItems, setAllItems] = useState([]);
   const [selectedDot, setSelectedDot] = useState(0);
-  const [numItems, setNumItems] = useState(24);
-  const [numVisible, setNumVisible] = useState(7);
+  const [numItems, setNumItems] = useState(totalItems);
+  const [numVisible, setNumVisible] = useState(itemsShown);
   const [numDots, setNumDots] = useState(Math.ceil(numItems / numVisible));
 
   let dotsArray = [];
