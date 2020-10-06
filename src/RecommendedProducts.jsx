@@ -5,13 +5,12 @@ import axios from 'axios';
 import exampleData from '../data/example_data.js';
 import {GlobalStyle, CenterTextBox} from './Styles.jsx';
 
-const App = ({totalItems, itemsShown, test}) => {
-
+const RecommendedProducts = ({totalItems, itemsShown, productId}) => {
 
   const [selectedDot, setSelectedDot] = useState(0);
-  const [numItems, setNumItems] = useState(totalItems);
+  const [numItems, setNumItems] = useState(totalItems || 24);
   const [allItems, setAllItems] = useState(exampleData.slice(0, numItems));
-  const [numVisible, setNumVisible] = useState(itemsShown);
+  const [numVisible, setNumVisible] = useState(itemsShown || 7);
   const [numDots, setNumDots] = useState(Math.ceil(numItems / numVisible));
 
   let dotsArray = [];
@@ -24,18 +23,10 @@ const App = ({totalItems, itemsShown, test}) => {
   }
 
   useEffect(() => {
-    if (!test) {
-      // 'garden' is a temporary query for now. It will likely be changed for later implementation
-      axios.get('/products/dept/garden')
+    if (productId) {
+      axios.get(`/products/id/${productId}`)
         .then(results => {
-          if (results.data.length < numItems) {
-            axios.get('/products/dept/games')
-              .then(results2 => {
-                setAllItems(results.data.concat(results2.data).slice(0, numItems));
-              })
-          } else {
-            setAllItems(results.data.slice(0, numItems));
-          }
+          setAllItems(results.data.slice(0, numItems));
         });
     }
   }, []);
@@ -60,6 +51,5 @@ const App = ({totalItems, itemsShown, test}) => {
     </div>
   );
 }
-// not an important comment--just checking that circleCI isn't tracking this branch
 
-export default App;
+export default RecommendedProducts;
