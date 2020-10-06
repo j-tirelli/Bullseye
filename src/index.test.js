@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './App.jsx';
+import App from './RecommendedProducts.jsx';
 import ListItem from './ListItem.jsx';
 import Dot from './Dot.jsx';
 import Adapter from 'enzyme-adapter-react-16';
