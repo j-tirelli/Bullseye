@@ -1,6 +1,7 @@
 const express = require('express');
 const RecommendedItem = require('../database/RecommendedItem.js');
 const path = require('path');
+const axios = require('axios');
 
 const app = express();
 
@@ -37,6 +38,18 @@ app.get('/products/price/min=:minPrice&max=:maxPrice', (req, res) => {
       res.json(results);
     }
   );
+});
+
+app.get('/products/:productId', async (req, res) => {
+  const searchedProduct = await RecommendedItem.findOne({ _id: req.params.productId });
+
+  let deptMatch = await axios.get(`http://localhost:3001/products/dept/${searchedProduct.department}`);
+  let brandMatch = await axios.get(`http://localhost:3001/products/brand/${searchedProduct.brand}`);
+  let priceMatch = await axios.get(`http://localhost:3001/products/price/min=${searchedProduct.price * 0.9}&max=${searchedProduct.price * 1.1}}`);
+
+  const allResults = deptMatch.data.concat(brandMatch.data).concat(priceMatch.data);
+
+  res.send(allResults);
 });
 
 const formatName = (string) => {
