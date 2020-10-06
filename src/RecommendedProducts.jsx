@@ -5,7 +5,7 @@ import axios from 'axios';
 import exampleData from '../data/example_data.js';
 import {GlobalStyle, CenterTextBox} from './Styles.jsx';
 
-const App = ({totalItems, itemsShown, productId}) => {
+const RecommendedProducts = ({totalItems, itemsShown, productId}) => {
 
   const [selectedDot, setSelectedDot] = useState(0);
   const [numItems, setNumItems] = useState(totalItems || 24);
@@ -51,6 +51,5 @@ const App = ({totalItems, itemsShown, productId}) => {
     </div>
   );
 }
-// not an important comment--just checking that circleCI isn't tracking this branch
 
-export default App;
+export default RecommendedProducts;

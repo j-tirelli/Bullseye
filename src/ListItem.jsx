@@ -10,15 +10,15 @@ const ListItem = ({item, visible}) => {
 
   if (visible) {
     return (
-      <RecListItem onClick={(e) => {handleClick(e)}}>
-        <RecItemAnchor href={item.productUrl}>
-          <RecItemImage src={item.imageUrl} ></RecItemImage>
-          <RecItemPrice>${item.price}</RecItemPrice>
+      <RecListItem key={`${item.title}-item`} onClick={(e) => {handleClick(e)}}>
+        <RecItemAnchor key={`${item.title}-anchor`} href={item.productUrl}>
+          <RecItemImage key={`${item.title}-image`} src={item.imageUrl} ></RecItemImage>
+          <RecItemPrice key={`${item.title}-price`}>${item.price}</RecItemPrice>
         </RecItemAnchor>
       </RecListItem>
     );
   } else {
-    return <div></div>
+    return <div key={`${item.title}-item`}></div>
   }
 };
 
