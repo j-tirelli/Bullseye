@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './App.jsx';
+import App from './RecommendedProducts.jsx';
 import ListItem from './ListItem.jsx';
 import Dot from './Dot.jsx';
 import Adapter from 'enzyme-adapter-react-16';
@@ -10,7 +10,7 @@ let app;
 Enzyme.configure({adapter: new Adapter()});
 
 beforeEach(() => {
-  app = shallow(<App totalItems={24} itemsShown={7} test={true}/>);
+  app = shallow(<App/>);
 });
 
 test('test suite is functional', () => {
