@@ -40,7 +40,7 @@ app.get('/products/price/min=:minPrice&max=:maxPrice', (req, res) => {
   );
 });
 
-app.get('/products/:productId', async (req, res) => {
+app.get('/products/id/:productId', async (req, res) => {
   const searchedProduct = await RecommendedItem.findOne({ _id: req.params.productId });
 
   let deptMatch = await axios.get(`http://localhost:3001/products/dept/${searchedProduct.department}`);
