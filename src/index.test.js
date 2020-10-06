@@ -10,7 +10,7 @@ let app;
 Enzyme.configure({adapter: new Adapter()});
 
 beforeEach(() => {
-  app = shallow(<App totalItems={24} itemsShown={7} test={true}/>);
+  app = shallow(<App/>);
 });
 
 test('test suite is functional', () => {
