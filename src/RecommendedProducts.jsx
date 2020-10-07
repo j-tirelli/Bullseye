@@ -3,7 +3,7 @@ import List from './List.jsx';
 import Dot from './Dot.jsx';
 import axios from 'axios';
 import exampleData from '../data/example_data.js';
-import {GlobalStyle, CenterTextBox} from './Styles.jsx';
+import {GlobalStyle, CenterTextBox, ItemsBox} from './Styles.jsx';
 
 const RecommendedProducts = ({totalItems, itemsShown, productId, heading}) => {
 
@@ -40,20 +40,22 @@ const RecommendedProducts = ({totalItems, itemsShown, productId, heading}) => {
   return (
     <div>
       <GlobalStyle />
-      <CenterTextBox><h4>{heading}</h4></CenterTextBox>
-      <div id="recommended-items">
-        <List
-          listItems={allItems}
-          numVisible={numVisible}
-          selectedDot={selectedDot}
-          numDots={numDots}
-          handleClick={(d) => setSelectedDot(selectedDot + d)}/>
-      </div>
-      <CenterTextBox>
-        {dotsArray.map((selected, i) =>
-          <Dot selected={selected} key={i} handleClick={() => setSelectedDot(i)}/>
-        )}
-      </CenterTextBox>
+      <ItemsBox>
+        <CenterTextBox><h4>{heading}</h4></CenterTextBox>
+        <div id="recommended-items">
+          <List
+            listItems={allItems}
+            numVisible={numVisible}
+            selectedDot={selectedDot}
+            numDots={numDots}
+            handleClick={(d) => setSelectedDot(selectedDot + d)}/>
+        </div>
+        <CenterTextBox>
+          {dotsArray.map((selected, i) =>
+            <Dot selected={selected} key={i} handleClick={() => setSelectedDot(i)}/>
+          )}
+        </CenterTextBox>
+      </ItemsBox>
     </div>
   );
 }
