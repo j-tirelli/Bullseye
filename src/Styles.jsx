@@ -141,3 +141,7 @@ export const NavButtonLeft = styled(NavButton)`
   justify-self: flex-start;
   margin-right: -40px;
 `;
+
+export const ItemsBox = styled.div`
+  width: 1450px;
+`;
