@@ -5,11 +5,17 @@ import axios from 'axios';
 import exampleData from '../data/example_data.js';
 import {GlobalStyle, CenterTextBox} from './Styles.jsx';
 
-const RecommendedProducts = ({totalItems, itemsShown, productId}) => {
+const RecommendedProducts = ({totalItems, itemsShown, productId, heading}) => {
+
+  let offset = 0;
+  // don't reuse products between 'more to consider' and 'similar items':
+  if (heading === 'Similar items') {
+    offset = 24;
+  }
 
   const [selectedDot, setSelectedDot] = useState(0);
   const [numItems, setNumItems] = useState(totalItems || 24);
-  const [allItems, setAllItems] = useState(exampleData.slice(0, numItems));
+  const [allItems, setAllItems] = useState(exampleData.slice(offset, offset + numItems));
   const [numVisible, setNumVisible] = useState(itemsShown || 7);
   const [numDots, setNumDots] = useState(Math.ceil(numItems / numVisible));
 
@@ -26,7 +32,7 @@ const RecommendedProducts = ({totalItems, itemsShown, productId}) => {
     if (productId) {
       axios.get(`/products/id/${productId}`)
         .then(results => {
-          setAllItems(results.data.slice(0, numItems));
+          setAllItems(results.data.slice(offset, offset + numItems));
         });
     }
   }, []);
@@ -34,7 +40,7 @@ const RecommendedProducts = ({totalItems, itemsShown, productId}) => {
   return (
     <div>
       <GlobalStyle />
-      <CenterTextBox><h4>More to consider</h4></CenterTextBox>
+      <CenterTextBox><h4>{heading}</h4></CenterTextBox>
       <div id="recommended-items">
         <List
           listItems={allItems}
