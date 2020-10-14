@@ -23,10 +23,7 @@ app.get('/products/dept/:dept', (req, res) => {
 });
 
 app.get('/products/brand/:brandName', (req, res) => {
-  // escape certain characters from request url
-  let brandWords = req.params.brandName.split(/[,.\s-&amp]/);
-  RecommendedItem.find({
-    brand: {$regex: `^${brandWords.join('.*\s*')}$`, $options: 'i'}}, (err, results) => {
+  helpers.getBrands(req.params.brandName, (err, results) => {
     res.json(results);
   });
 });
