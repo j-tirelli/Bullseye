@@ -29,14 +29,9 @@ app.get('/products/brand/:brandName', (req, res) => {
 });
 
 app.get('/products/price/min=:minPrice&max=:maxPrice', (req, res) => {
-  RecommendedItem.find({
-    price: {
-      $gte: req.params.minPrice || 0,
-      $lte: req.params.maxPrice || 1000 }
-    }, (err, results) => {
-      res.json(results);
-    }
-  );
+  helpers.getPrices(req.params.minPrice, req.params.maxPrice, (err, results) => {
+    res.json(results);
+  });
 });
 
 app.get('/products/id/:productId', async (req, res) => {
