@@ -13,6 +13,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, '..', 'dist')));
 
 app.get('/', (req, res) => {
+  debugger;
   console.log('GOT a GET');
 });
 
@@ -35,7 +36,10 @@ app.get('/products/price/min=:minPrice&max=:maxPrice', (req, res) => {
 });
 
 app.get('/products/id/:productId', async (req, res) => {
+  // debugger;
   RecommendedItem.findOne({ id: parseInt(req.params.productId) }, async (err, searchedProduct) => {
+    console.log(searchedProduct);
+    // debugger;
     let deptMatch = await axios.get(`http://localhost:3003/products/dept/${searchedProduct.department}`);
     let brandMatch = await axios.get(`http://localhost:3003/products/brand/${searchedProduct.brand}`);
     let priceMatch = await axios.get(`http://localhost:3003/products/price/min=${searchedProduct.price * 0.9}&max=${searchedProduct.price * 1.1}}`);
