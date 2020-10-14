@@ -5,20 +5,27 @@ const formatName = (string) => {
 };
 
 const getDept = (dept, callback = (result) => result) => {
-  let formattedDept = formatName(dept);
-  return RecommendedItem.find({ department: formattedDept }, callback);
+  let department = formatName(dept);
+  return RecommendedItem.find({ department }, callback);
 };
 
 const getBrands = (brandName, callback = (result) => result) => {
   let brandWords = brandName.split(/[,.\s-&amp]/);
-  return RecommendedItem.find({ brand: {$regex: `^${brandWords.join('.*\s*')}$`, $options: 'i'}}, callback);
+  let $regex = `^${brandWords.join('.*\s*')}$`;
+  let $options = 'i'
+  return RecommendedItem.find({ brand: { $regex, $options }}, callback);
 };
 
-const getPrices = (min = 0, max = 1000, callback = (result) => result) => {
-  return RecommendedItem.find({ price: { $gte: min, $lte: max } }, callback);
+const getPrices = ($gte = 0, $lte = 1000, callback = (result) => result) => {
+  return RecommendedItem.find({ price: { $gte, $lte } }, callback);
 };
 
+const getRelatedDept = (id, callback = (result) => result) => {
+  id = parseInt(id);
+  RecommendedItem.findOne({ id }, callback);
+}
 
 module.exports.getDept = getDept;
 module.exports.getBrands = getBrands;
 module.exports.getPrices = getPrices;
+module.exports.getRelatedDept = getRelatedDept;
