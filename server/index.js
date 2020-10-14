@@ -12,6 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.static(path.join(__dirname, '..', 'dist')));
 
+// ////////////////////////Get Requests////////////////////////////// //
+
 app.get('/products/dept/:dept', (req, res) => {
   helpers.getDept(req.params.dept, (err, results) => {
     res.json(results);
@@ -59,6 +61,7 @@ app.get('/products/id/product/:productId', async (req, res) => {
   });
 });
 
+// ////////////////////////Delete Requests////////////////////////////// //
 
 app.delete('/products/id/product/:productId', async (req, res) => {
   helpers.deleteProduct(req.params.productId, (err, deletedProduct) => {
@@ -70,8 +73,23 @@ app.delete('/products/id/product/:productId', async (req, res) => {
       res.send(`Success! Item  was removed!`)
     }
   });
+});
 
+// ////////////////////////Post Requests////////////////////////////// //
 
+app.post('/products/id/product/:productId', async (req, res) => {
+  let obj = req.body;
+  obj.id = req.params.productId;
+  obj.productUrl = '/' + (Number(obj.id) + 1);
+  helpers.createProduct(obj, (err, createdProduct) => {
+    if (err) {
+      console.error(err);
+      res.send('Error Caught at findOne a callback');
+    } else {
+      console.log(createdProduct)
+      res.send(`Success! Item  was created!`)
+    }
+  });
 });
 
 

@@ -30,8 +30,13 @@ const deleteProduct = (id, callback = (result) => result) => {
   RecommendedItem.deleteOne({ id }, callback);
 }
 
+const createProduct = (obj, callback = (result) => result) => {
+  RecommendedItem.create(obj, callback);
+}
+
 module.exports.getDept = getDept;
 module.exports.getBrands = getBrands;
 module.exports.getPrices = getPrices;
 module.exports.getProduct = getProduct;
 module.exports.deleteProduct = deleteProduct;
+module.exports.createProduct = createProduct;
