@@ -31,7 +31,7 @@ app.get('/products/price/min=:minPrice&max=:maxPrice', (req, res) => {
 });
 
 app.get('/products/id/:productId', async (req, res) => {
-  helpers.getRelatedDept(req.params.productId, (err, searchedProduct) => {
+  helpers.getProduct(req.params.productId, (err, searchedProduct) => {
     if (err) {
       console.error(err);
       res.send('Error Caught at findOne a callback');
@@ -48,7 +48,19 @@ app.get('/products/id/:productId', async (req, res) => {
   });
 });
 
-app.delete('/products/id/:productId', async (req, res) => {
+app.get('/products/id/product/:productId', async (req, res) => {
+  helpers.getProduct(req.params.productId, (err, searchedProduct) => {
+    if (err) {
+      console.error(err);
+      res.send('Error Caught at findOne a callback');
+    } else {
+      res.json(searchedProduct);
+    }
+  });
+});
+
+
+app.delete('/products/id/product/:productId', async (req, res) => {
   helpers.deleteProduct(req.params.productId, (err, deletedProduct) => {
     if (err) {
       console.error(err);

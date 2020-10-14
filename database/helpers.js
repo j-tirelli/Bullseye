@@ -20,7 +20,7 @@ const getPrices = ($gte = 0, $lte = 1000, callback = (result) => result) => {
   return RecommendedItem.find({ price: { $gte, $lte } }, callback);
 };
 
-const getRelatedDept = (id, callback = (result) => result) => {
+const getProduct = (id, callback = (result) => result) => {
   id = parseInt(id);
   RecommendedItem.findOne({ id }, callback);
 }
@@ -33,5 +33,5 @@ const deleteProduct = (id, callback = (result) => result) => {
 module.exports.getDept = getDept;
 module.exports.getBrands = getBrands;
 module.exports.getPrices = getPrices;
-module.exports.getRelatedDept = getRelatedDept;
+module.exports.getProduct = getProduct;
 module.exports.deleteProduct = deleteProduct;
