@@ -3,6 +3,7 @@ const RecommendedItem = require('../database/RecommendedItem.js');
 const path = require('path');
 const axios = require('axios');
 const cors = require('cors');
+const helpers = require('./helpers.js');
 
 const app = express();
 
@@ -16,8 +17,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/products/dept/:dept', (req, res) => {
-  let formattedDept = formatName(req.params.dept);
-  RecommendedItem.find({ department: formattedDept }, (err, results) => {
+  helpers.getDept(req.params.dept, (err, results) => {
     res.json(results);
   });
 });
@@ -55,8 +55,5 @@ app.get('/products/id/:productId', async (req, res) => {
 
 });
 
-const formatName = (string) => {
-  return string[0].toUpperCase() + string.split('').slice(1).join('');
-};
 
 module.exports = app;
