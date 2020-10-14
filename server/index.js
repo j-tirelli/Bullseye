@@ -3,7 +3,7 @@ const RecommendedItem = require('../database/RecommendedItem.js');
 const path = require('path');
 const axios = require('axios');
 const cors = require('cors');
-const helpers = require('./helpers.js');
+const helpers = require('../database/helpers.js');
 
 const app = express();
 
@@ -46,6 +46,19 @@ app.get('/products/id/:productId', async (req, res) => {
       });
     }
   });
+});
+
+app.delete('/products/id/:productId', async (req, res) => {
+  helpers.deleteProduct(req.params.productId, (err, deletedProduct) => {
+    if (err) {
+      console.error(err);
+      res.send('Error Caught at findOne a callback');
+    } else {
+      console.log(deletedProduct)
+      res.send(`Success! Item  was removed!`)
+    }
+  });
+
 
 });
 
