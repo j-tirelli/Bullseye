@@ -1,4 +1,4 @@
-const RecommendedItem = require('../database/RecommendedItem.js');
+const RecommendedItem = require('./RecommendedItem.js');
 
 const formatName = (string) => {
   return string[0].toUpperCase() + string.split('').slice(1).join('');
@@ -25,7 +25,13 @@ const getRelatedDept = (id, callback = (result) => result) => {
   RecommendedItem.findOne({ id }, callback);
 }
 
+const deleteProduct = (id, callback = (result) => result) => {
+  id = parseInt(id);
+  RecommendedItem.deleteOne({ id }, callback);
+}
+
 module.exports.getDept = getDept;
 module.exports.getBrands = getBrands;
 module.exports.getPrices = getPrices;
 module.exports.getRelatedDept = getRelatedDept;
+module.exports.deleteProduct = deleteProduct;
