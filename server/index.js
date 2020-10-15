@@ -16,19 +16,19 @@ app.use(express.static(path.join(__dirname, '..', 'dist')));
 
 app.get('/products/dept/:dept', async (req, res) => {
   helpers.getDept(req.params.dept, (err, results) => {
-    res.json(results);
+    res.status(200).json(results);
   });
 });
 
 app.get('/products/brand/:brandName', async (req, res) => {
   helpers.getBrands(req.params.brandName, (err, results) => {
-    res.json(results);
+    res.status(200).json(results);
   });
 });
 
 app.get('/products/price/min=:minPrice&max=:maxPrice', async (req, res) => {
   helpers.getPrices(req.params.minPrice, req.params.maxPrice, (err, results) => {
-    res.json(results);
+    res.status(200).json(results);
   });
 });
 
@@ -36,14 +36,14 @@ app.get('/products/id/:productId', async (req, res) => {
   helpers.getProduct(req.params.productId, (err, searchedProduct) => {
     if (err) {
       console.error(err);
-      res.send('Error Caught at findOne a callback');
+      res.status(503).send('Error Caught at findOne a callback');
     } else {
       helpers.getDept(searchedProduct.department, (err, results) => {
         if (err) {
           console.error(err);
-          res.send('Error Caught at get department');
+          res.status(503).send('Error Caught at get department');
         } else {
-          res.json(results);
+          res.status(200).json(results);
         }
       });
     }
@@ -54,9 +54,9 @@ app.get('/products/id/product/:productId', async (req, res) => {
   helpers.getProduct(req.params.productId, (err, searchedProduct) => {
     if (err) {
       console.error(err);
-      res.send('Error Caught at findOne a callback');
+      res.status(503).send('Error Caught at findOne a callback');
     } else {
-      res.json(searchedProduct);
+      res.status(200).json(searchedProduct);
     }
   });
 });
@@ -64,13 +64,12 @@ app.get('/products/id/product/:productId', async (req, res) => {
 // ////////////////////////Delete Requests////////////////////////////// //
 
 app.delete('/products/id/product/:productId', async (req, res) => {
-  helpers.deleteProduct(req.params.productId, (err, deletedProduct) => {
+  helpers.deleteProduct(req.params.productId, (err) => {
     if (err) {
       console.error(err);
-      res.send('Error Caught at delete callback');
+      res.status(503).send('Error Caught at delete callback');
     } else {
-      console.log(deletedProduct)
-      res.send(`Success! Item  was removed!`)
+      res.status(204).send(`Success! Item  was removed!`)
     }
   });
 });
@@ -81,13 +80,12 @@ app.post('/products/id/product/:productId', async (req, res) => {
   let obj = req.body;
   obj.id = req.params.productId;
   obj.productUrl = '/' + (Number(obj.id) + 1);
-  helpers.createProduct(obj, (err, createdProduct) => {
+  helpers.createProduct(obj, (err) => {
     if (err) {
       console.error(err);
-      res.send('Error Caught at create callback');
+      res.status(503).send('Error Caught at create callback');
     } else {
-      console.log(createdProduct)
-      res.send(`Success! Item  was created!`)
+      res.status(204).send(`Success! Item  was created!`)
     }
   });
 });
@@ -97,13 +95,12 @@ app.post('/products/id/product/:productId', async (req, res) => {
 app.put('/products/id/product/:productId', async (req, res) => {
   let obj = req.body;
   obj.id = req.params.productId;
-  helpers.updateProduct(obj, (err, createdProduct) => {
+  helpers.updateProduct(obj, (err) => {
     if (err) {
       console.error(err);
-      res.send('Error Caught at update callback');
+      res.status(503).send('Error Caught at update callback');
     } else {
-      console.log(createdProduct)
-      res.send(`Success! Item  was updated!`)
+      res.status(204).send(`Success! Item  was updated!`)
     }
   });
 });
