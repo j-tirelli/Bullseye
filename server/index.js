@@ -67,7 +67,7 @@ app.delete('/products/id/product/:productId', async (req, res) => {
   helpers.deleteProduct(req.params.productId, (err, deletedProduct) => {
     if (err) {
       console.error(err);
-      res.send('Error Caught at findOne a callback');
+      res.send('Error Caught at delete callback');
     } else {
       console.log(deletedProduct)
       res.send(`Success! Item  was removed!`)
@@ -84,10 +84,26 @@ app.post('/products/id/product/:productId', async (req, res) => {
   helpers.createProduct(obj, (err, createdProduct) => {
     if (err) {
       console.error(err);
-      res.send('Error Caught at findOne a callback');
+      res.send('Error Caught at create callback');
     } else {
       console.log(createdProduct)
       res.send(`Success! Item  was created!`)
+    }
+  });
+});
+
+// ////////////////////////Put Requests////////////////////////////// //
+
+app.put('/products/id/product/:productId', async (req, res) => {
+  let obj = req.body;
+  obj.id = req.params.productId;
+  helpers.updateProduct(obj, (err, createdProduct) => {
+    if (err) {
+      console.error(err);
+      res.send('Error Caught at update callback');
+    } else {
+      console.log(createdProduct)
+      res.send(`Success! Item  was updated!`)
     }
   });
 });

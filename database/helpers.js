@@ -34,9 +34,28 @@ const createProduct = (obj, callback = (result) => result) => {
   RecommendedItem.create(obj, callback);
 }
 
+const updateProduct = ({ id, title, brand, department, price, imageUrl, productUrl }, callback = (result) => result) => {
+  // let id = obj.id;
+  // let title = obj.title;
+  // let brand = obj.brand;
+  // let department = obj.department;
+  // let price = obj.price;
+  // let imageUrl = obj.imageUrl;
+  // let productUrl = obj.productUrl;
+  RecommendedItem.updateOne({ id }, {
+    title,
+    brand,
+    department,
+    price,
+    imageUrl,
+    productUrl
+  }, callback);
+}
+
 module.exports.getDept = getDept;
 module.exports.getBrands = getBrands;
 module.exports.getPrices = getPrices;
 module.exports.getProduct = getProduct;
 module.exports.deleteProduct = deleteProduct;
 module.exports.createProduct = createProduct;
+module.exports.updateProduct = updateProduct;
