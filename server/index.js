@@ -14,19 +14,19 @@ app.use(express.static(path.join(__dirname, '..', 'dist')));
 
 // ////////////////////////Get Requests////////////////////////////// //
 
-app.get('/products/dept/:dept', (req, res) => {
+app.get('/products/dept/:dept', async (req, res) => {
   helpers.getDept(req.params.dept, (err, results) => {
     res.json(results);
   });
 });
 
-app.get('/products/brand/:brandName', (req, res) => {
+app.get('/products/brand/:brandName', async (req, res) => {
   helpers.getBrands(req.params.brandName, (err, results) => {
     res.json(results);
   });
 });
 
-app.get('/products/price/min=:minPrice&max=:maxPrice', (req, res) => {
+app.get('/products/price/min=:minPrice&max=:maxPrice', async (req, res) => {
   helpers.getPrices(req.params.minPrice, req.params.maxPrice, (err, results) => {
     res.json(results);
   });

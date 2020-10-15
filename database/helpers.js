@@ -35,21 +35,8 @@ const createProduct = (obj, callback = (result) => result) => {
 }
 
 const updateProduct = ({ id, title, brand, department, price, imageUrl, productUrl }, callback = (result) => result) => {
-  // let id = obj.id;
-  // let title = obj.title;
-  // let brand = obj.brand;
-  // let department = obj.department;
-  // let price = obj.price;
-  // let imageUrl = obj.imageUrl;
-  // let productUrl = obj.productUrl;
-  RecommendedItem.updateOne({ id }, {
-    title,
-    brand,
-    department,
-    price,
-    imageUrl,
-    productUrl
-  }, callback);
+  id = parseInt(id);
+  RecommendedItem.updateOne({ id }, { title, brand, department, price, imageUrl, productUrl }, callback);
 }
 
 module.exports.getDept = getDept;
