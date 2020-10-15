@@ -6,18 +6,18 @@ const formatName = (string) => {
 
 const getDept = (dept, callback = (result) => result) => {
   let department = formatName(dept);
-  return RecommendedItem.find({ department }, callback);
+  RecommendedItem.find({ department }, callback);
 };
 
 const getBrands = (brandName, callback = (result) => result) => {
   let brandWords = brandName.split(/[,.\s-&amp]/);
   let $regex = `^${brandWords.join('.*\s*')}$`;
   let $options = 'i'
-  return RecommendedItem.find({ brand: { $regex, $options }}, callback);
+  RecommendedItem.find({ brand: { $regex, $options }}, callback);
 };
 
 const getPrices = ($gte = 0, $lte = 1000, callback = (result) => result) => {
-  return RecommendedItem.find({ price: { $gte, $lte } }, callback);
+  RecommendedItem.find({ price: { $gte, $lte } }, callback);
 };
 
 const getProduct = (id, callback = (result) => result) => {
