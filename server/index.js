@@ -1,7 +1,5 @@
 const express = require('express');
-const RecommendedItem = require('../database/RecommendedItem.js');
 const path = require('path');
-const axios = require('axios');
 const cors = require('cors');
 const helpers = require('../database/helpers.js');
 
@@ -14,26 +12,10 @@ app.use(express.static(path.join(__dirname, '..', 'dist')));
 
 // ////////////////////////Get Requests////////////////////////////// //
 
-app.get('/products/dept/:dept', async (req, res) => {
-  helpers.getDept(req.params.dept, (err, results) => {
-    res.status(200).json(results);
-  });
-});
-
-app.get('/products/brand/:brandName', async (req, res) => {
-  helpers.getBrands(req.params.brandName, (err, results) => {
-    res.status(200).json(results);
-  });
-});
-
-app.get('/products/price/min=:minPrice&max=:maxPrice', async (req, res) => {
-  helpers.getPrices(req.params.minPrice, req.params.maxPrice, (err, results) => {
-    res.status(200).json(results);
-  });
-});
-
 app.get('/products/id/:productId', async (req, res) => {
+  console.log(req.params.productId);
   helpers.getProduct(req.params.productId, (err, searchedProduct) => {
+    console.log(searchedProduct);
     if (err) {
       console.error(err);
       res.status(503).send('Error Caught at findOne a callback');
@@ -104,6 +86,5 @@ app.put('/products/id/product/:productId', async (req, res) => {
     }
   });
 });
-
 
 module.exports = app;
