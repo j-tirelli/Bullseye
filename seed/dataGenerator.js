@@ -10,7 +10,7 @@ const generateRecords = function (numRecords) {
     departments.push(faker.commerce.department());
   }
 
-  let writeStream = fs.createWriteStream('./data/example_data.js');
+  let writeStream = fs.createWriteStream('./data/example_data.csv');
 
   const write = (offset = 1) => {
     let ready = true;
