@@ -11,7 +11,13 @@ The following commands should be run from their own terminals to render the app:
 - `npm run build`
 - `npm start`
 
-API Resource
+
+**Data Generation**
+```
+npm run data 1000 - Create a csv file at data/example_data.js that is 1000 lines long and filled with seed data.
+```
+
+## API Resources
 
 **GET Requests**
 ```
