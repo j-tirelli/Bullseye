@@ -29,6 +29,7 @@
     "fs": "0.0.1-security",
     "mongoose": "^5.10.7",
     "nodemon": "^2.0.4",
+    "newrelic": "^6.13.1",
     "pg": "^8.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
