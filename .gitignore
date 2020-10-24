@@ -4,3 +4,4 @@ data/example_data.csv
 .fuse*
 .env
 *.rest
+newrelic.js
