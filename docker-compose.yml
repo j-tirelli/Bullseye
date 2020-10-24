@@ -1,0 +1,27 @@
+version: "3.7"
+
+volumes:
+    db_data:
+
+services:
+    postgres:
+        image: postgres
+        hostname: postgres
+        container_name: postgres
+        restart: always
+        ports:
+          - 5432:5432
+        environment:
+            POSTGRES_DB: database
+            POSTGRES_USER: user
+            POSTGRES_PASSWORD: password
+        volumes:
+            - db_data:/var/lib/postgresql/data
+
+    recommended_products:
+        build: .
+        hostname: recommended_products
+        container_name: recommended_products
+        restart: always
+        ports:
+            - 8080:3003
