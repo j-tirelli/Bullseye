@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-// const helpers = require('../mongo/helpers.js');
 const helpers = require('../postgres/helpers.js');
 require('dotenv').config()
 
@@ -15,6 +14,7 @@ app.use(express.static(path.join(__dirname, '..', 'dist')));
 // ////////////////////////Get Requests////////////////////////////// //
 
 app.get('/products/id/:productId', async (req, res) => {
+  // console.log(req.params.productId)
   helpers.getProduct(req.params.productId)
     .then(product => {
       helpers.getLikeDept(product.department)
@@ -47,8 +47,8 @@ app.get('/products/id/product/:productId', async (req, res) => {
 
 app.delete('/products/id/product/:productId', async (req, res) => {
   helpers.deleteProduct(req.params.productId)
-    .then(() => {
-      res.status(204).send(`Success! Item  was removed!`);
+  .then((result) => {
+    res.status(200).json(result.rows[0])
     })
     .catch((err) => {
       console.error(err);
@@ -58,13 +58,11 @@ app.delete('/products/id/product/:productId', async (req, res) => {
 
 // ////////////////////////Post Requests////////////////////////////// //
 
-app.post('/products/id/product/:productId', async (req, res) => {
+app.post('/products/id/product/', async (req, res) => {
   let obj = req.body;
-  obj.id = req.params.productId;
-  obj.productUrl = '/' + (Number(obj.id) + 1);
   helpers.createProduct(obj)
-    .then(() => {
-      res.status(204).send(`Success! Item  was created!`)
+    .then((result) => {
+      res.status(200).json(result.rows[0])
     })
     .catch((err) => {
       console.error(err);
@@ -78,8 +76,8 @@ app.put('/products/id/product/:productId', async (req, res) => {
   let obj = req.body;
   obj.id = req.params.productId;
   helpers.updateProduct(obj)
-    .then(() => {
-      res.status(204).send(`Success! Item  was updated!`)
+  .then((result) => {
+    res.status(200).json(result.rows[0])
     })
     .catch((err) => {
       console.error(err);
