@@ -17,7 +17,7 @@ const generateRecords = function (numRecords) {
     'https://loremflickr.com/320/240/'
   ]
 
-  let writeStream = fs.createWriteStream('/home/john/example_data.csv');
+  let writeStream = fs.createWriteStream('postgres/example_data.csv');
 
   writeStream.write(`title|brand|department|price|imageUrl|productUrl\n`);
 
