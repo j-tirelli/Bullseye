@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const helpers = require('../postgres/helpers.js');
+const payload = require('../tests/payload.json');
 require('dotenv').config()
 
 const app = express();
@@ -13,8 +14,16 @@ app.use(express.static(path.join(__dirname, '..', 'dist')));
 
 // ////////////////////////Get Requests////////////////////////////// //
 
+
+app.get('/loaderio-ef5fd1d1ea935ab4dda1f3cfaf6f910a', async (req, res) => {
+  res.status(200).send('loaderio-ef5fd1d1ea935ab4dda1f3cfaf6f910a');
+});
+
+app.get('/loaderio/payload.json', async (req, res) => {
+  res.status(200).json(payload);
+});
+
 app.get('/products/id/:productId', async (req, res) => {
-  // console.log(req.params.productId)
   helpers.getProduct(req.params.productId)
     .then(product => {
       helpers.getLikeDept(product.department)
