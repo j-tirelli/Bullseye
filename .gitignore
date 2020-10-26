@@ -1,7 +1,8 @@
 node_modules/
 dist/
-data/example_data.csv
+db/
 .fuse*
 .env
 *.rest
 newrelic.js
+newrelic_agent.log

@@ -4,24 +4,18 @@ volumes:
     db_data:
 
 services:
-    postgres:
-        image: postgres
-        hostname: postgres
-        container_name: postgres
-        restart: always
-        ports:
-          - 5432:5432
-        environment:
-            POSTGRES_DB: database
-            POSTGRES_USER: user
-            POSTGRES_PASSWORD: password
-        volumes:
-            - db_data:/var/lib/postgresql/data
-
     recommended_products:
         build: .
-        hostname: recommended_products
+        # image: jtirelli/recommended_products
         container_name: recommended_products
-        restart: always
+        environment:
+            NEW_RELIC_LICENSE_KEY: ${NEW_RELIC_LICENSE_KEY}
+            PGDATABASE: ${PGDATABASE}
+            PGHOST: ${PGHOST}
+            PGUSER: ${PGUSER}
+            PGPASSWORD: ${PGPASSWORD}
+            PGPORT: ${PGPORT}
+        hostname: recommended_products
         ports:
-            - 8080:3003
+            - 3003:3003
+        restart: always

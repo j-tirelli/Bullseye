@@ -1,0 +1,19 @@
+version: "3.7"
+
+volumes:
+    db_data:
+
+services:
+    postgres:
+        image: jtirelli/recommended_postgres
+        hostname: postgres
+        container_name: postgres
+        restart: always
+        ports:
+          - 5432:5432
+        environment:
+            POSTGRES_DB: ${PGDATABASE}
+            POSTGRES_USER: ${PGUSER}
+            POSTGRES_PASSWORD: ${PGPASSWORD}
+        volumes:
+            - db_data:/var/lib/postgresql/data

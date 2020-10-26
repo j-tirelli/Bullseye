@@ -1,0 +1,13 @@
+.circleci/
+.vscode/
+db/
+src/
+.dockerignore
+.env
+.gitignore
+babel.config.js
+docker-compose.yml
+Dockerfile
+jest.config.js
+*/example_data.csv
+webpack.config.js
