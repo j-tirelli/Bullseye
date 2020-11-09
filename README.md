@@ -1,5 +1,5 @@
 # Bullseye
-Bullseye is an ecommerce home-goods single page application that was designed handle a high amount of traffic through horizontal scaling. for . The user interface allows users to peruse items for sale and get recommendations from similiar items as well as review products.
+Bullseye is an ecommerce home-goods single page application that was designed handle a high amount of traffic through horizontal scaling. The user interface allows users to peruse items for sale and get recommendations from similiar items as well as review products.
 
 
 ## Team Members
