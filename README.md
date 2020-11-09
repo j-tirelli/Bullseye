@@ -1,23 +1,54 @@
-# recommendedProducts
-Main repository for recommended products module for FEC project
-
-On load, this repository opens some sample data for recommended products for a Target web app. When running through the included Express server and properly seeded with data, it will query a MongoDB database (created through the Mongoose ODM) for specific product departments.
-
-To properly start up this service, run the following commands from the root directory:
-- `npm install`
-- `npm run seed`
-
-The following commands should be run from their own terminals to render the app:
-- `npm run build`
-- `npm start`
+# Bullseye
+Bullseye is an ecommerce home-goods single page application that was designed handle a high amount of traffic through horizontal scaling. for . The user interface allows users to peruse items for sale and get recommendations from similiar items as well as review products.
 
 
-**Data Generation**
+## Team Members
+
+  - [Owen Wexler](https://www.linkedin.com/in/owen-wexler/)
+  - [Brian Hauck](https://www.linkedin.com/in/brian-hauck-a554ba1bb/)
+  - [John Tirelli](https://www.linkedin.com/in/john-tirelli/)
+  - [Luke Eastman](http://linkedin.com/in/luke-eastman/)
+
+## Table of Contents
+
+1. [Usage](#usage)
+1. [Requirements](#requirements)
+1. [Installation](#installation)
+1. [Scripts](#scripts)
+1. [Resources](#resources)
+
+## Usage
+> After installation, use npm start to run the server and navigate to htttp://localhost:<your port> (default: 3000)
+
+## Requirements
+
+- dayjs
+- express
+- markdown-it
+- mongo-sanitize
+- mongoose
+- react
+- react-dom
+- socket.io
+- styled-components
+
+### Installation
+
+From within the root directory:
+
+```sh
+1. npm install
+1. npm start
 ```
-npm run data 1000 - Create a csv file at data/example_data.js that is 1000 lines long and filled with seed data.
-```
 
-## API Resources
+## Scripts
+From within the root folder:
+- npm run build - run webpack to create a bundle.js file.
+- npm run data - Generate a csv with fake data for importing into database.
+- npm run test - Test front end through jest.
+- npm start - Start the webserver.
+
+## Resources
 
 **GET Requests**
 ```
